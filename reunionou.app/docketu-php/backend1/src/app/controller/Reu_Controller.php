@@ -8,6 +8,7 @@ use \Psr\Http\Message\ResponseInterface as Response;
 //Model
 use \reu\back1\app\model\User as User;
 use \reu\back1\app\model\Event as Event;
+use \reu\back1\app\model\Comment as Comment;
 
 //Error
 
@@ -21,7 +22,7 @@ class Reu_Controller {
 
     ///////////////USER//////////////
 
-    public function getAllUser(Request $req, Response $resp, array $args): Response {
+    public function getAllUsers(Request $req, Response $resp, array $args): Response {
         
         //Get all the Users
         $users = User::select(['id', 'mail', 'fullname', 'username', 'password'])
@@ -75,7 +76,7 @@ class Reu_Controller {
 
     ///////////////EVENT//////////////
 
-    public function getAllEvent(Request $req, Response $resp, array $args): Response {
+    public function getAllEvents(Request $req, Response $resp, array $args): Response {
 
         //Get all the events
         $events = Event::select(['id', 'title', 'description', 'date', 'place', 'id_user'])
@@ -84,8 +85,8 @@ class Reu_Controller {
         //Complete the data
         $data = [
             "type" => "collection",
-            "count" => count($users),
-            "users" => $users,
+            "count" => count($events),
+            "users" => $events,
         ];
 
         //Configure the response header
@@ -127,7 +128,7 @@ class Reu_Controller {
 
     ///////////////COMMENT//////////////
 
-    public function getAllComment(Request $req, Response $resp, array $args): Response {
+    public function getAllComments(Request $req, Response $resp, array $args): Response {
 
         //Get all the comments
         $comments = Comment::select(['id', 'id_event', 'id_user', 'content'])

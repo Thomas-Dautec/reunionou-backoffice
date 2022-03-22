@@ -3,7 +3,7 @@
 return [
     'settings' => [
         'displayErrorDetails' => true,
-        'dbfile' => parse_ini_file('commande.db.conf.ini.dist'),
+        'dbfile' => parse_ini_file('back1.db.conf.ini.dist'),
 
         //DEBUG LOG
         'debug.name' => 'slim.log',
